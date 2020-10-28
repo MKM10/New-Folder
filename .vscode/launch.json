@@ -1,0 +1,27 @@
+# defining all the coversions here:
+
+mile_to_feet    = 5280
+hour_to_sec     = 3600
+
+ib_to_kg        = 0.453592
+in_to_meter     = 0.0254
+
+cm_to_nm        = 10**7
+
+a = 60      #mile/hour 
+a_ = a * mile_to_feet/hour_to_sec
+
+print(str(a) + ' mile/hour = ' + str(a_) + ' ft/sec') 
+60 mile/hour = 88 ft/sec 
+
+b = 50      #ib/in^2
+b_ = b * ib_to_kg/(in_to_meter**2)
+
+print(str(b) + ' ib/in^2 = ' + str(b_) + ' kg/m^2') 
+50 ib/in^2 = 35153.4503069 kg/m^2
+
+c = 6.2      #cm/hr^2
+c_ = c* cm_to_nm/(hour_to_sec**2)
+
+print(str(c) + ' cm/hr^2 = ' + str(c_) + ' nm/s^2') 
+6.2 cm/hr^2 = 4.78395061728 nm/s^2
