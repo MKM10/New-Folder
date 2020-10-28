@@ -1,0 +1,174 @@
+Q1
+
+An aqueous solution with chlorine 30 g/L and an organic compound with no chlorine at the rate 50 L/min were put into an extraction machine and produced aqueous solution with chlorine 5 g/L and organic compound with chlorine 10 g/L, what is the rate of aqueous solution?
+
+In [2]:
+Org_comp_rate=50
+Org_cmp_with_chlorine=0
+Aqueous_with_chlorine=30
+AqueousSol_in_machine=5
+Org_cmp_in_machine =10
+Aqueous_rate=((Org_comp_rate* Org_cmp_in_machine )-(Org_comp_rate *Org_cmp_with_chlorine ))/(Aqueous_with_chlorine- AqueousSol_in_machine) 
+print("The rate of Aqueous solution is:", Aqueous_rate,"L/min")
+Q2
+
+A gas mixture input is given to a membrane with 40% O2 and 60% N2, the waste contains 80% of the input and the product contains 25% O2 and 75% N2, what is the percentage of O2 in the waste?
+
+In [3]:
+class Mixture:
+    def _init_(self):
+        self.contents = {}
+        self.totalAmount = 0
+
+    def setElements(self, elementName, elementAmount):
+        self.contents[elementName] = elementAmount
+        self.updateTotal()
+
+    # updates the total amount in the mixture
+
+    def updateTotal(self):
+        self.totalAmount = 0
+        for item in self.contents:
+            self.totalAmount += self.contents[item]
+
+    # returns the total amount in the mixture
+
+    def getTotalAmount(self):
+        return self.totalAmount
+
+    # returns the amount of element in the mixture
+    def getElementAmount(self, element):
+        return self.contents[element]
+
+    # This method updates the amount of elements in proportion
+    # such that total amount is equal to given total amount
+    def updateElemntsOnTotalAmount(self, total):
+        proportion = total/self.totalAmount
+        for item in self.contents:
+            self.contents[item] *= proportion
+        self.totalAmount = total
+
+
+gasMixture = Mixture()
+gasMixture.setElements("O2", 40)
+gasMixture.setElements("N2", 60)
+
+# total amount of gas mixture
+totalAmount = gasMixture.getTotalAmount()
+
+# our waste is 80% of gas mixture, so product will be remaining 20%
+totalAmountProduct = 0.2*totalAmount
+
+# create product
+product = Mixture()
+product.setElements("O2", 25)
+product.setElements("N2", 75)
+
+
+# we know total aount of product
+# so now lets resize product contents
+product.updateElemntsOnTotalAmount(totalAmountProduct)
+
+# get total amount of waste
+totalAmountWaste = totalAmount-totalAmountProduct
+
+
+# get total amount of oxygen in waste
+totalAmountO2Waste = (gasMixture.getElementAmount(
+    "O2") - product.getElementAmount("O2"))
+
+# get total amount of nitrogen in waste
+totalAmountN2Waste = gasMixture.getElementAmount(
+    "N2") - product.getElementAmount("N2")
+
+
+# create waste mixture
+wasteMixture = Mixture()
+wasteMixture.setElements("O2", totalAmountO2Waste)
+wasteMixture.setElements("N2", totalAmountN2Waste)
+
+# to get the percentage we update total amount of waste to 100
+wasteMixture.updateElemntsOnTotalAmount(100)
+
+print("Percentage of O2 in waste = ", wasteMixture.getElementAmount("O2"), "%")
+Q3
+
+100 Kg mol of a gas mixture input is given to a membrane with 30% O2 and 70% N2, the waste contains 60% of the input and the product contains 10% O2 and 90% N2, what are the number of moles of O2 in the waste?
+
+In [4]:
+#function to calculate the number of moles
+def calculateMoles(gasMixture):
+  
+  #calculate the O2 gas
+  gasO2 = gasMixture * 30 / 100
+  #calculate the waste O2 gas
+  wasteO2 = gasO2 * 60 / 100
+  #calculate the production O2 gas
+  prodO2 = wasteO2 * 10 / 100
+  #convert the O2 gas in gram
+  prodO2 = prodO2 * 1000
+  #calculate the number of moles
+  #the weight of 1 mole of O2 is 32 gram
+  numOfMoles = prodO2 / 32
+    
+  #return statement
+  return int(numOfMoles)
+  
+#function calling and display the result
+print("The number of moles:",calculateMoles(100))
+
+Q4
+
+A liquid solid mixture with 20% solid and 80% liquid is input to a dryer, if the amount of evaporated water is 60% of the amount of input, what is the percentage of solid in the product?
+
+In [2]:
+#solid:liquid = 2:8 or solid:liquid = 1:4
+
+#let's denote the ratio by 'p' parts so solid has 1parts and liquid has 4 parts.
+
+s=1
+
+l=4
+
+#total mixture
+
+t=s+l
+
+#amount evaporated
+
+amt_evp=t*0.6
+
+#left amount in the after evaporation
+
+left_amt=t*0.4
+
+#solid percentage in the left product
+
+s_per=(1/left_amt)*100
+
+print(s_per)
+
+Q5
+
+50 Kg of a solid liquid mixture containing 20% solid and 80% water is left open in the atmosphere, after some time the water is 60%, how much water is evaporated?
+
+In [6]:
+total = 50 #total quantity of material
+waterbefore = total * 0.80 #80% of water 
+waterafter = total * 0.60 #60% of water after evaporation
+waterevaporated = waterbefore - waterafter #total water evaporated
+print("Amount of water evaporated", waterevaporated, "Kg")
+Q6
+
+400 g of CaSO4 is dissolved with 500 g of H2O, if 226 g of CaSO4.5H2O crystallizes out, then what is the percentage of CaSO4 in the remaining solution?
+
+In [8]:
+## the amount of caso4 is : 400
+w = int(input("Enter amount of CaSO4: "))
+## the amount of CaSO4.5H2O crytallized out :226
+c = int(input("Enter amount of CaSO4.5H2O crytallized out: "))
+
+used = (136*c)/226
+
+percentage = ((w - used)*100)/400
+print(percentage)
