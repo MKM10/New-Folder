@@ -1,0 +1,126 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Q1**\n",
+    "\n",
+    "A fuel is prepared by mixing 1 kg of n-decane, 1 kg of methyl amine and 1 kg of ethyl acetate. This fuel is burned in a furnace with 20% excess air. The flue gas contains carbon monoxide, carbon dioxide, nitrogen, oxygen and water. Is the combustion complete or incomplete? Why? \n",
+    "\n",
+    "  a. Determine the amount of theoretical oxygen needed for this combustion. \n",
+    "\n",
+    "  b. Calculate the moles of air fed to the furnace. \n",
+    "\n",
+    "  c. Determine the mass of the flue gas that exits the furnace.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [#a
+ndecane=0.007
+oxygen_ndecane=0.1085
+methylamine=0.032
+oxygen_methylamine=0.072
+ethyl_acetate=0.011
+oxygen_ethyl_acetate=0.055
+th_oxygen=oxygen_ndecane + oxygen_methylamine + oxygen_ethyl_acetate
+print("th_oxygen",th_oxygen,"kmol")
+#b
+th_air=th_oxygen / 0.21
+print("th_air",round(th_air,3), "kmol")
+n_air=th_air * 1.2
+print("n_air",round(n_air,4), "kmol")
+#c
+ndecane_Co2=0.07
+ndecane_H2O=0.077
+methylamine_Co2=0.032
+methylamine_H2O=0.08
+methylamine_N2=0.016
+ethyl_Co2=0.044
+ethyl_H2O=0.044
+
+n_Co2_total=ndecane_Co2 + methylamine_Co2 + ethyl_Co2
+print("n_Co2_total",round(n_Co2_total,4), "kmol")
+m_Co2=n_Co2_total * (12+2*16)
+print("m_Co2",round(m_Co2,3), "kg")
+
+n_H2o_total=ndecane_H2O+methylamine_H2O+ethyl_H2O
+print("n_H2o_total",round(n_H2o_total,3), "kmol")
+m_H2O=n_H2o_total*(2+16)
+print("m_H2O",round(m_H2O,3), "kg")
+
+n_N2=(0.79*1.345)+0.016
+print("n_N2",round(n_N2,3), "kmol")
+
+m_N2=n_N2 * 28
+print("m_N2",round(m_N2,3), "kmol")
+
+n_O2=0.21*(1.345-1.121)
+print("n_O2",round(n_O2,3), "kmol")
+
+m_O2=n_O2*32
+print("m_O2",round(m_O2,3), "kg")
+
+m_flue_gas=m_Co2+m_H2O+m_N2+m_O2
+print("m_flue_gas",round(m_flue_gas,3), "kg")
+    "**Q2** \n",
+    "\n",
+    "Fuel cells have been proposed for use in cars and for power\n",
+    "generation as part of a hydrogen economy. They offer the advantages of higher efficiency (not limited by heat cycle efficiencies)\n",
+    "and cleaner fuel with no significant pollutants. The net reaction\n",
+    "is as follows:\n",
+    "\n",
+    "$$2H_2 + O_2 → 2H_2O$$\n",
+    "\n",
+    "where $O_2$ comes from the air (which, for this problem, can be\n",
+    "assumed to be 21 mole% $O_2$ and 79 mole% $N_2$). Hydrogen ($H_2$)\n",
+    "flows into a fuel cell implemented in a prototype vehicle at a\n",
+    "rate of 27 gmol/min. Air (consisting of oxygen and nitrogen)\n",
+    "enters the fuel cell in a separate stream. The amount of oxygen entering the fuel cell is 50% more than that needed to react\n",
+    "stoichiometrically with all of the entering hydrogen. The conversion of hydrogen in the fuel cell is 85%. Assume that only a\n",
+    "single stream exits the fuel cell. What is the flow rate of each of\n",
+    "the species leaving the fuel cell?"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+  source[H2_reacted=22.95
+th_oxygen=11.475
+n_O2_feed=17.2125
+n_air_feed=81.964
+n_n2_feed=64.752
+
+n_N2_out=n_n2_feed
+print("n_N2_out",n_N2_out,"gmol/min")
+
+n_H2_out=0.15*27
+print("n_H2_out",n_H2_out,"gmol/min")
+
+n_H2O_out=22.95* (2/2)
+print("n_H2O_out",n_H2O_out,"gmol/min")
+
+n_O2_out=n_O2_feed-th_oxygen
+print("n_O2_out",round(n_O2_out,4),"gmol/min")
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
